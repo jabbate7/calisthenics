@@ -85,6 +85,9 @@ def main():
         cfg, is_train=False
     )
 
+    import os
+    print(os.getcwd())
+
     if cfg.TEST.MODEL_FILE:
         logger.info('=> loading model from {}'.format(cfg.TEST.MODEL_FILE))
         model.load_state_dict(torch.load(cfg.TEST.MODEL_FILE), strict=False)
