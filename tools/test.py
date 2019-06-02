@@ -85,9 +85,6 @@ def main():
         cfg, is_train=False
     )
 
-    import os
-    print(os.getcwd())
-
     if cfg.TEST.MODEL_FILE:
         logger.info('=> loading model from {}'.format(cfg.TEST.MODEL_FILE))
         model.load_state_dict(torch.load(cfg.TEST.MODEL_FILE), strict=False)
@@ -97,6 +94,8 @@ def main():
         )
         logger.info('=> loading model from {}'.format(model_state_file))
         model.load_state_dict(torch.load(model_state_file))
+
+    import pdb; pdb.set_trace()
 
     model = torch.nn.DataParallel(model, device_ids=cfg.GPUS).cuda()
 
